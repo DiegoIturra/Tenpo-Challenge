@@ -18,7 +18,7 @@ public class CalculateController {
     @GetMapping("/calculate")
     public ResponseEntity<Object> calculate(@RequestParam int num1 , @RequestParam int num2) {
         //Calculate the response calculate service
-        double result = calculateService.calculate(num1, num2);
+        Double result = calculateService.calculate(num1, num2);
 
         return ResponseEntity
                 .ok(Map.of("result", String.valueOf(result)));
