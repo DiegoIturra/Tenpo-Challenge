@@ -1,7 +1,6 @@
 package com.project.challenge.controllers;
 
 import com.project.challenge.services.CalculateService;
-import com.project.challenge.services.ExternalPercentageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
