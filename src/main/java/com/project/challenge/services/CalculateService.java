@@ -32,7 +32,7 @@ public class CalculateService {
 
     public Double calculate(int num1, int num2) {
         Double percentage = fetchPercentage();
-        return (num1 + num2) * percentage;
+        return (num1 + num2) + percentage;
     }
 
 }
