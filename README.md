@@ -8,4 +8,4 @@ Servicio REST que realiza cálculos con porcentaje dinámico, guarda un historia
 1. Clonar el repositorio:
    ```bash
    git clone https://github.com/DiegoIturra/Tenpo-Challenge.git
-   cd challenge
+   cd Tenpo-Challenge
