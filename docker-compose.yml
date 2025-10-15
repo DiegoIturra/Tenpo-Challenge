@@ -1,11 +1,9 @@
 services:
   db:
-    image: postgres:latest
+    image: postgres:18
     container_name: challenge-postgres-db
-    environment:
-      POSTGRES_USER: ${CHALLENGE_USERNAME}
-      POSTGRES_PASSWORD: ${CHALLENGE_PASSWORD}
-      POSTGRES_DB: challenge_database
+    env_file:
+      - .env
     ports:
       - "3000:5432"
     volumes:
