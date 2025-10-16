@@ -44,7 +44,11 @@ public class CalculateServiceImpl implements CalculateService {
 
     private Double fetchPercentage(){
         try {
-            return percentageService.getPercentage();
+            Double percentage = percentageService.getPercentage();
+
+            Optional.ofNullable(cacheManager.getCache("percentageCache"))
+                    .ifPresent(cache -> cache.put("percentage", percentage));
+            return percentage;
         } catch (Exception e) {
             return Optional.ofNullable(cacheManager.getCache("percentageCache"))
                     .map(cache -> cache.get("percentage", Double.class))
