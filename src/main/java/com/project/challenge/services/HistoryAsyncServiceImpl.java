@@ -3,19 +3,20 @@ package com.project.challenge.services;
 import com.project.challenge.models.entities.History;
 import com.project.challenge.services.interfaces.HistoryAsyncService;
 import com.project.challenge.services.interfaces.HistoryService;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+@RequiredArgsConstructor
 @Service
 public class HistoryAsyncServiceImpl implements HistoryAsyncService {
 
     private static final Logger log = LoggerFactory.getLogger(HistoryAsyncServiceImpl.class);
 
-    @Autowired
-    private HistoryService historyService;
+    private final HistoryService historyService;
+
 
     @Async
     @Override

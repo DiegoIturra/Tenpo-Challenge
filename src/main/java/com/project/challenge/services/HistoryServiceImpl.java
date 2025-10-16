@@ -3,7 +3,7 @@ package com.project.challenge.services;
 import com.project.challenge.models.entities.History;
 import com.project.challenge.repositories.HistoryRepository;
 import com.project.challenge.services.interfaces.HistoryService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -12,11 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
+@RequiredArgsConstructor
 @Service
 public class HistoryServiceImpl implements HistoryService {
 
-    @Autowired
-    private HistoryRepository historyRepository;
+    private final HistoryRepository historyRepository;
 
     @Override
     @Transactional(readOnly = true)

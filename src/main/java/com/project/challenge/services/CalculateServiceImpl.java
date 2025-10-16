@@ -4,9 +4,9 @@ import com.project.challenge.models.entities.History;
 import com.project.challenge.services.interfaces.CalculateService;
 import com.project.challenge.services.interfaces.ExternalPercentageService;
 import com.project.challenge.services.interfaces.HistoryAsyncService;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -14,19 +14,18 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
+
+@RequiredArgsConstructor
 @Service
 public class CalculateServiceImpl implements CalculateService {
 
     private static final Logger log = LoggerFactory.getLogger(CalculateServiceImpl.class);
 
-    @Autowired
-    ExternalPercentageService percentageService;
 
-    @Autowired
-    HistoryAsyncService historyAsyncService;
+    private final ExternalPercentageService percentageService;
+    private final HistoryAsyncService historyAsyncService;
+    private final CacheManager cacheManager;
 
-    @Autowired
-    CacheManager cacheManager;
 
     @Override
     public Double calculate(int num1, int num2) {
