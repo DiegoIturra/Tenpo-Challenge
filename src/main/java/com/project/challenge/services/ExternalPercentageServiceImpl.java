@@ -1,11 +1,13 @@
 package com.project.challenge.services;
 
+import com.project.challenge.services.interfaces.ExternalPercentageService;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ExternalPercentageService {
+public class ExternalPercentageServiceImpl implements ExternalPercentageService {
 
+    @Override
     @Cacheable(value = "percentageCache", key = "'percentage'")
     public Double getPercentage(){
         Double randomNumber = Math.random() * 100;

@@ -1,7 +1,7 @@
 package com.project.challenge.controllers;
 
 import com.project.challenge.models.entities.History;
-import com.project.challenge.services.HistoryService;
+import com.project.challenge.services.interfaces.HistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

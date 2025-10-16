@@ -1,6 +1,11 @@
 package com.project.challenge.services;
 
 import com.project.challenge.models.entities.History;
+import com.project.challenge.services.interfaces.CalculateService;
+import com.project.challenge.services.interfaces.ExternalPercentageService;
+import com.project.challenge.services.interfaces.HistoryAsyncService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.http.HttpStatus;
@@ -10,7 +15,9 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Optional;
 
 @Service
-public class CalculateService {
+public class CalculateServiceImpl implements CalculateService {
+
+    private static final Logger log = LoggerFactory.getLogger(CalculateServiceImpl.class);
 
     @Autowired
     ExternalPercentageService percentageService;
@@ -21,6 +28,7 @@ public class CalculateService {
     @Autowired
     CacheManager cacheManager;
 
+    @Override
     public Double calculate(int num1, int num2) {
         String endpoint = buildEndpoint(num1, num2);
         String parameters = buildParameters(num1, num2);
@@ -69,7 +77,7 @@ public class CalculateService {
         record.setParameters(parameters);
         record.setResponse("{ result: " + result + " }");
         historyAsyncService.saveHistoryAsync(record);
-        System.out.println("SAVING A RECORD WITHOUT ERROR: " + record);
+        log.info("SAVING A RECORD WITHOUT ERROR: " + record);
     }
 
     private void saveErrorRecord(String endpoint, String parameters, Exception exception){
@@ -79,6 +87,6 @@ public class CalculateService {
         record.setParameters(parameters);
         record.setResponse(null);
         historyAsyncService.saveHistoryAsync(record);
-        System.out.println("SAVING A RECORD WITH AN ERROR: " + exception.getMessage());
+        log.info("SAVING A RECORD WITH AN ERROR: " + exception.getMessage());
     }
 }

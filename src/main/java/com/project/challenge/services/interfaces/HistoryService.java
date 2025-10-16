@@ -1,4 +1,4 @@
-package com.project.challenge.services;
+package com.project.challenge.services.interfaces;
 
 import com.project.challenge.models.entities.History;
 import org.springframework.data.domain.Page;
