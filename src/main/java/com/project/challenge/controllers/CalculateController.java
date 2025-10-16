@@ -1,7 +1,7 @@
 package com.project.challenge.controllers;
 
 import com.project.challenge.services.CalculateServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 @RestController
+@RequiredArgsConstructor
 public class CalculateController {
 
-    @Autowired
-    CalculateServiceImpl calculateService;
+    private final CalculateServiceImpl calculateService;
 
     @GetMapping("/calculate")
     public ResponseEntity<Object> calculate(@RequestParam int num1 , @RequestParam int num2) {
